@@ -1,0 +1,88 @@
+%YAML 1.2
+---
+name: EKL
+file_extensions:
+  - ekl
+  - CATRule
+  - CAT
+scope: source.ekl
+contexts:
+  main:
+    - include: comments
+    - include: strings
+    - include: numbers
+    - include: units
+    - include: keywords
+    - include: var-decl
+    - include: set-assign
+    - include: parameter-paths
+    - include: types
+    - include: operators
+
+  comments:
+    - match: //.*$
+      scope: comment.line.double-slash.ekl
+    - match: /\*
+      scope: punctuation.definition.comment.begin.ekl
+      push:
+        - meta_scope: comment.block.ekl
+        - match: \*/
+          scope: punctuation.definition.comment.end.ekl
+          pop: true
+
+  strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.ekl
+      push:
+        - meta_scope: string.quoted.double.ekl
+        - match: '\\.'
+          scope: constant.character.escape.ekl
+        - match: '"'
+          scope: punctuation.definition.string.end.ekl
+          pop: true
+
+  numbers:
+    - match: \b0x[0-9A-Fa-f]+\b
+      scope: constant.numeric.hex.ekl
+    - match: \b\d+\.\d+(?:[eE][+\-]?\d+)?\b
+      scope: constant.numeric.float.ekl
+    - match: \b\d+\b
+      scope: constant.numeric.integer.ekl
+
+  units:
+    - match: \b\d+(?:\.\d+)?\s*(?:mm|cm|m|in|ft|deg|rad|kg|g|s|ms)\b
+      scope: constant.numeric.unit.ekl
+
+  keywords:
+    - match: (?i)\b(let|set|function|returns|for|while|if|else|return|include|exit|exitfunction)\b
+      scope: keyword.control.ekl
+    - match: \b(TRUE|FALSE|True|False|NULL|Null)\b
+      scope: constant.language.ekl
+
+  types:
+    - match: \b(VPMReference|AdvisorParameterSet|DTSheetType|List|String|Integer|Real|Boolean|Map|HTTPClient|DataTreeNode|KWETuple|ValuePointer|Hole|Surface|Curve|Line|Point|Plane|Body|V_NatureEnum)\b
+      scope: storage.type.ekl
+
+  var-decl:
+    - match: \b(Let)\s+([A-Za-z_][A-Za-z0-9_]*(?:\s*,\s*[A-Za-z_][A-Za-z0-9_]*)*)\s*\(([A-Za-z_][A-Za-z0-9_]*)\)
+      captures:
+        1: keyword.declaration.let.ekl
+        2: variable.other.ekl
+        3: storage.type.ekl
+      scope: meta.variable.declaration.ekl
+
+  set-assign:
+    - match: \b(Set)\s+([A-Za-z_][A-Za-z0-9_]*)\s*(=)
+      captures:
+        1: keyword.declaration.set.ekl
+        2: variable.other.ekl
+        3: keyword.operator.assignment.ekl
+      scope: meta.variable.set.ekl
+
+  parameter-paths:
+    - match: '[A-Za-z_][A-Za-z0-9_.]*\\\\(?:[A-Za-z_][A-Za-z0-9_.]*\\\\?)+[A-Za-z_][A-Za-z0-9_.]*'
+      scope: meta.parameter.path.ekl
+
+  operators:
+    - match: (::|->|==|<>|<=|>=|=|<|>|\+|\-|\*|/|%|&|\||!|\^|~)
+      scope: keyword.operator.ekl

@@ -1,0 +1,50 @@
+{
+	"scope": "source.ekl",
+	"completions": [
+		{ "trigger": "Let — declare variable", "contents": "Let ${1:var}(${2:Type})" },
+		{ "trigger": "Let — declare multiple", "contents": "Let ${1:a},${2:b},${3:c}(${4:Type})" },
+		{ "trigger": "Set — typed assign", "contents": "Set ${1:var} = ${2:value}" },
+		{ "trigger": "Function — define", "contents": "Function ${1:Name}(${2:arg}(${3:Type})) Returns ${4:ReturnType}\n{\n\t${0:// body}\n}" },
+		{ "trigger": "include", "contents": "include \"${1:Library}\"" },
+		{ "trigger": "exit", "contents": "exit" },
+		{ "trigger": "exitfunction", "contents": "exitfunction" },
+
+		{ "trigger": "Notify(msg)", "contents": "Notify(\"${1:message}\")" },
+		{ "trigger": "Message(msg, arg)", "contents": "Message(\"${1:label} #\", ${2:arg})" },
+		{ "trigger": "Trace(level, msg, arg)", "contents": "Trace(${1:level}, \"${2:label} #\", ${3:arg})" },
+
+		{ "trigger": "CreateSheet(path)", "contents": "CreateSheet(${1:path})" },
+		{ "trigger": "GetEditorRoots(type)", "contents": "GetEditorRoots(\"${1:VPMReference}\")" },
+		{ "trigger": "Query(type, where)", "contents": "${1:obj}->Query(\"${2:AdvisorParameterSet}\", \"${3:filter}\")" },
+		{ "trigger": "ListAttributesValuePointers()", "contents": "${1:aps}.ListAttributesValuePointers(\"\")" },
+		{ "trigger": "GetAttributeValuePointer()", "contents": "${1:obj}.GetAttributeValuePointer(${2:name})" },
+		{ "trigger": "ValuatePointer()", "contents": "${1:vp}.ValuatePointer(${2:target}, \"${3:attr}\", \"${4:type}\")" },
+		{ "trigger": "AuthorizedValues", "contents": "${1:vp}.AuthorizedValues" },
+		{ "trigger": "Delete()", "contents": "${1:vp}.Delete()" },
+		{ "trigger": "ReplaceAll(text, find, repl)", "contents": "ReplaceAll(${1:text}, \"${2:find}\", \"${3:repl}\")" },
+		{ "trigger": "ReplaceSubText(text, find, repl)", "contents": "ReplaceSubText(${1:text}, \"${2:find}\", \"${3:repl}\")" },
+		{ "trigger": "GetSystemInfo(key)", "contents": "GetSystemInfo(\"${1:UserName}\")" },
+		{ "trigger": "IsReal(x)", "contents": "IsReal(${1:x})" },
+		{ "trigger": "StringToReal(s)", "contents": "StringToReal(${1:s})" },
+
+		{ "trigger": "CreateHTTPClient()", "contents": "CreateHTTPClient()" },
+		{ "trigger": "HTTPClient.Post(url, mode, payload, dtn)", "contents": "${1:client}.Post(${2:url}, \"${3:HTTPDEFINED}\", ${4:payload}, ${5:dtn})" },
+		{ "trigger": "DataTreeNode.Access(path, type)", "contents": "${1:dtn}.Access(\"${2:path}\", \"${3:String}\")" },
+
+		{ "trigger": "DTSheetType.SetCell(r,c,val)", "contents": "${1:sheet}->SetCell(${2:row}, ${3:col}, ${4:val})" },
+		{ "trigger": "List.Append(x)", "contents": "${1:list}.Append(${2:x})" },
+		{ "trigger": "List.RemoveAll()", "contents": "${1:list}.RemoveAll()" },
+		{ "trigger": "List.GetItem(i)", "contents": "${1:list}.GetItem(${2:i})" },
+		{ "trigger": "List.Size()", "contents": "${1:list}.Size()" },
+
+		{ "trigger": "Access(Feature, Attr, Type)", "contents": "Access(${1:Feature}, ${2:\"Attr\"}, ${3:\"Type\"})" },
+		{ "trigger": "FormatDimensionToString(Magnitude, Unit, Prec)", "contents": "FormatDimensionToString(${1:Magnitude}, ${2:\"Unit\"}, ${3:Precision})" },
+		{ "trigger": "GetParameterString(Annotation, Name)", "contents": "GetParameterString(${1:Annotation}, ${2:\"Name\"})" },
+		{ "trigger": "GetParameterInteger(Annotation, Name)", "contents": "GetParameterInteger(${1:Annotation}, ${2:\"Name\"})" },
+		{ "trigger": "GetParameterReal(Annotation, Name)", "contents": "GetParameterReal(${1:Annotation}, ${2:\"Name\"})" },
+		{ "trigger": "GetParameterLength(Annotation, Name)", "contents": "GetParameterLength(${1:Annotation}, ${2:\"Name\"})" },
+		{ "trigger": "GetParameterAngle(Annotation, Name)", "contents": "GetParameterAngle(${1:Annotation}, ${2:\"Name\"})" },
+		{ "trigger": "GetViewTemplate(View, Name)", "contents": "GetViewTemplate(${1:View}, ${2:\"Name\"})" },
+		{ "trigger": "SetViewTemplate(View, Name)", "contents": "SetViewTemplate(${1:View}, ${2:\"Name\"})" }
+	]
+}
